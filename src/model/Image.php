@@ -5,7 +5,7 @@ use Intervention\Image\Facades\Image as Img;
 
 class Image extends Model 
 {
-    use SoftDeletes, Traits\Act, Traits\Sortable, Traits\Path, Traits\File;
+    use SoftDeletes, Traits\Sortable, Traits\Path, Traits\File;
     
     protected $table = 'images';
     protected $visible = array(

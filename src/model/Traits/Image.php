@@ -4,7 +4,7 @@ trait Image
 {
     public function images($part = null)
     {
-        $model = $this->hasMany('Model\Image', 'model_id');
+        $model = $this->hasMany(config('image.model', 'Model\Image'), 'model_id');
         
         if (empty($part)) {
             return $model;
