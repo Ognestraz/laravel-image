@@ -20,7 +20,7 @@ class ImageServiceProvider extends ServiceProvider
         }
         
         if (!$this->app->routesAreCached()) {
-            require __DIR__.'/app/Http/routes.php';
+            require __DIR__.'/routes.php';
         }
         
         $this->app->register('Intervention\Image\ImageServiceProvider');
