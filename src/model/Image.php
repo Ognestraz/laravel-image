@@ -1,11 +1,10 @@
 <?php namespace Model;
 
-use Illuminate\Database\Eloquent\SoftDeletes;
 use Intervention\Image\Facades\Image as Img;
 
 class Image extends Model 
 {
-    use SoftDeletes, Traits\Sortable, Traits\Path, Traits\File;
+    use Traits\File;
     
     protected $table = 'images';
     protected $visible = array(
