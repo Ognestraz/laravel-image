@@ -1,7 +1,7 @@
 <?php namespace Ognestraz\Image;
 
 use Illuminate\Support\Facades\Input;
-//use Img;
+use Img;
 use Model\Image;
 
 class ImageController extends \Illuminate\Routing\Controller

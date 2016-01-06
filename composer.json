@@ -16,7 +16,7 @@
     "autoload": {
         "psr-4": {
             "Ognestraz\\Image\\": "src/app/",
-            "Model\\": "src/model/"
+            "Ognestraz\\Image\\Model\\": "src/model/"
         }
     },
     "config": {
