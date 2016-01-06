@@ -38,7 +38,7 @@ class Image extends Model
     
     public function getVariants()
     {
-        return array_merge($this->defaultVariants, config('app.image.variants', []));
+        return array_merge($this->defaultVariants, config('image.variants', []));
     }    
     
     public function scopeDefault($query)
@@ -191,7 +191,7 @@ class Image extends Model
             $this->_makeList($img, $item);
         }
         
-        $dir = app()->basePath('public') . '/image/' . $variant . '/';
+        $dir = public_path() . '/image/' . $variant . '/';
         if (false === is_dir($dir)) {
             mkdir($dir, 0766, true);
             chmod($dir, 0766);
