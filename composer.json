@@ -1,0 +1,23 @@
+{
+    "name": "ognestraz/laravel-image",
+    "description": "The Image Module for Laravel Framework.",
+    "keywords": ["framework", "laravel", "lumen"],
+    "authors": [
+        {
+            "name": "ognestraz",
+            "email": "ognestraz@gmail.com"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {
+        "php": ">=5.5.9"
+    },
+    "autoload": {
+        "psr-4": {
+            "Model\\": "src/model/"
+        }
+    },
+    "config": {
+        "preferred-install": "dist"
+    }
+}
