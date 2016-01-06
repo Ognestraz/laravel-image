@@ -52,7 +52,7 @@ class Image extends Model
     
     public function imageable()
     {
-        return $this->morphTo('Model\Image', 'model', 'model_id');
+        return $this->morphTo(config('image.model', 'Model\Image'), 'model', 'model_id');
     }    
     
     public function delete()
@@ -304,7 +304,7 @@ class Image extends Model
         }
     }
  
-    public function file($part = '', $default = '')
+    public function filename($part = '', $default = '')
     {
         $part_path = $part ? $part.'/' : '';
         $filename = $this->getDirectoryPath().$part_path.$this->filename;
