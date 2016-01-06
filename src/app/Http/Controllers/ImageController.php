@@ -1,4 +1,4 @@
-<?php namespace Ognestraz\Image;
+<?php namespace Ognestraz\Image\Http\Controllers;
 
 use Illuminate\Support\Facades\Input;
 use Intervention\Image\Facades\Image as Img;

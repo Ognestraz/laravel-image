@@ -1,5 +1,5 @@
 <?php
-namespace Ognestraz\Image;
+namespace Ognestraz\Image\Providers;
 
 use Illuminate\Support\ServiceProvider;
 
@@ -13,7 +13,7 @@ class ImageServiceProvider extends ServiceProvider
     public function boot()
     {
         if (!$this->app->routesAreCached()) {
-            require __DIR__.'/routes.php';
+            require __DIR__.'/../Http/routes.php';
         }
         
         $this->app->register('Intervention\Image\ImageServiceProvider');
