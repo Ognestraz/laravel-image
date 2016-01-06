@@ -19,6 +19,10 @@ class ImageServiceProvider extends ServiceProvider
             class_alias('Intervention\Image\Facades\Image', 'Img');
         }
         
+        if (!$this->app->routesAreCached()) {
+            require __DIR__.'/app/Http/routes.php';
+        }
+        
         $this->app->register('Intervention\Image\ImageServiceProvider');
     }
 
