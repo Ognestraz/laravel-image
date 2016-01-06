@@ -15,6 +15,7 @@
     },
     "autoload": {
         "psr-4": {
+            "Ognestraz\\Image\\": "src/",
             "Model\\": "src/model/"
         }
     },

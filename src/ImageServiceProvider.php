@@ -1,5 +1,5 @@
 <?php
-namespace Ognestraz\Providers;
+namespace Ognestraz\Image;
 
 use Illuminate\Support\ServiceProvider;
 
