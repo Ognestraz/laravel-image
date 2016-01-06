@@ -1,7 +1,7 @@
 <?php namespace Model;
 
-use Img;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Intervention\Image\Facades\Image as Img;
 
 class Image extends Model 
 {
@@ -209,7 +209,7 @@ class Image extends Model
 
         $filename = storage_path().'/app/' . $this->filename;
 
-        $img = \Intervention\Image\Facades\Image::make($filename);
+        $img = Img::make($filename);
         $this->saveVariant($img, $variant);
 
         return $img->response('jpg');

@@ -5,8 +5,6 @@ use Illuminate\Support\ServiceProvider;
 
 class ImageServiceProvider extends ServiceProvider
 {
-    protected static $aliasesRegistered = false;
-    
     /**
      * Bootstrap any application services.
      *
@@ -14,11 +12,6 @@ class ImageServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        if (!static::$aliasesRegistered) {
-            static::$aliasesRegistered = true;
-            class_alias('Intervention\Image\Facades\Image', 'Img');
-        }
-        
         if (!$this->app->routesAreCached()) {
             require __DIR__.'/routes.php';
         }
