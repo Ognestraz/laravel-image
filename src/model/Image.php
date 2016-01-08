@@ -4,7 +4,7 @@ use Intervention\Image\Facades\Image as Img;
 
 class Image extends Model 
 {
-    use Traits\File;
+    use Traits\Path, Traits\File;
     
     protected $table = 'images';
     protected $visible = array(
