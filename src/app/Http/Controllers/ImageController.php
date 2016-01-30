@@ -91,16 +91,16 @@ class ImageController extends \Illuminate\Routing\Controller
         $x = (int)ceil(Input::get('x1'));
         $y = (int)ceil(Input::get('y1'));
 
-        $img = Img::make($image->file($source));
+        $img = Img::make($image->filename($source));
         
         if ($width && $height) {
             $img->crop($width, $height, $x, $y);
         }
         
-        $img->save($image->file($variant));        
+        $img->save($image->filename($variant));
         
         if (!$variant && $revariantion) {
-            $image->setFileAttribute($image->file());
+            $image->setFileAttribute($image->filename());
             $image->save();
         }
         
