@@ -5,6 +5,7 @@ trait Image
     public function images($part = null)
     {
         $model = $this->hasMany(config('image.model', 'Model\Image'), 'model_id');
+        $model->where('model', $this->table);
         
         if (empty($part)) {
             return $model;
@@ -22,6 +23,6 @@ trait Image
     
     public function image()
     {
-        return $this->images('main')->orderBy('sort', 'asc')->first();
+        return $this->images('main')->where('model', $this->table)->orderBy('sort', 'asc')->first();
     }
 }
