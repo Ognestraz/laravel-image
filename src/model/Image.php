@@ -12,7 +12,8 @@ class Image extends Model
         'name',
         'description',
         'filename',
-        'path'
+        'path',
+        'created_at'
     );
 
     public $imageDir = 'public/image/';
