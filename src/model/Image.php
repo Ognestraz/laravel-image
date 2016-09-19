@@ -1,5 +1,6 @@
 <?php namespace Model;
 
+use Illuminate\Support\Facades\App;
 use Intervention\Image\Facades\Image as Img;
 
 class Image extends Model 
@@ -197,7 +198,12 @@ class Image extends Model
             chmod($dir, 0766);
         }
         
-        $img->save($dir . $this->path);
+        $fullname = $dir . $this->path;
+        $img->save($fullname);
+
+        $dest = 'public/image/' . $variant . '/' . $this->path;
+        $ftp = App::make('ftp');
+        $ftp->send($fullname, $dest);
     }
 
     public function show($variant)
