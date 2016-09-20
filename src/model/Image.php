@@ -198,12 +198,7 @@ class Image extends Model
             chmod($dir, 0766);
         }
         
-        $fullname = $dir . $this->path;
-        $img->save($fullname);
-
-        $dest = 'public/image/' . $variant . '/' . $this->path;
-        $ftp = App::make('ftp');
-        $ftp->send($fullname, $dest);
+        $img->save($dir . $this->path);
     }
 
     public function show($variant)
