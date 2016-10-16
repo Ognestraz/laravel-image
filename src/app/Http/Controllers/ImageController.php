@@ -2,7 +2,6 @@
 
 use Illuminate\Support\Facades\Input;
 use Intervention\Image\Facades\Image as Img;
-use Model\Image;
 
 class ImageController extends \Illuminate\Routing\Controller
 {
@@ -16,10 +15,14 @@ class ImageController extends \Illuminate\Routing\Controller
     
     static protected $input_file = 'imagefile';
     static public $image_dir = 'files/image/';
+
+    public static function getClassModel()
+    {
+        return config('image.model', Model\Image::class);
+    }
     
     public function content($id, $view)
     {
-        //$view = Input::get('view', 'image');
         $model = $this->model($id);
         
         return view($this->templatePath().'.content.'.$view, array($this->model => $model));
@@ -27,12 +30,14 @@ class ImageController extends \Illuminate\Routing\Controller
     
     public function image($variant, $path)
     {
-        return Image::findPath($path, true, true)->show($variant);
-    }    
+        $classModel = static::getClassModel();
+        return $classModel::findPath($path, true, true)->show($variant);
+    }
     
     public function index()
     {
-         $list = Image::orderBy('sort', 'asc')->get();
+        $classModel = static::getClassModel();
+        $list = $classModel::orderBy('sort', 'asc')->get();
      
         return view($this->templatePath().'.index', array('list' => $list));
     }
@@ -43,17 +48,12 @@ class ImageController extends \Illuminate\Routing\Controller
         $view = !empty($variant) ? 'variant' : 'create';
         
         if ($variant === 'main') {
-            
             $variant = '';
-            
         }
         
         $model = $this->model($id);
-        
         if ($model->id) {
-
-            return view($this->templatePath().'.'.$view, array($this->modelName => $model, 'variant' => $variant)); 
-
+            return view($this->templatePath().'.'.$view, array($this->modelName => $model, 'variant' => $variant));
         }
 
         return false;
@@ -61,16 +61,17 @@ class ImageController extends \Illuminate\Routing\Controller
     
     public function upload()
     {
-         $view = Input::get('view', 'uploader');
+        $classModel = static::getClassModel();
+        $view = Input::get('view', 'uploader');
      
         if ($view === 'list' || $view === 'list-content') { //need fix
             
             $part = Input::get('part');
-            $list = Image::get(Input::get('model'), Input::get('model_id', 0))->images($part)->orderBy('sort', 'asc')->get();           
+            $list = $classModel::get(Input::get('model'), Input::get('model_id', 0))->images($part)->orderBy('sort', 'asc')->get();     
             
         } else {
             
-            $list = Image::orderBy('sort', 'asc')->get();
+            $list = $classModel::orderBy('sort', 'asc')->get();
             
         }
 
